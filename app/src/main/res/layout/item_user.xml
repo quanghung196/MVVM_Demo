@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.example.myapplication.model.User" />
+
+        <variable
+            name="viewModel"
+            type="com.example.myapplication.viewmodel.MainFragmentViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/user_card_margin"
+        android:elevation="@dimen/user_card_elevator"
+        android:onClick="@{() -> viewModel.onUserClicked(user)}"
+        app:cardCornerRadius="@dimen/user_card_radius">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/user_card_padding"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/userName"
+                style="@style/ItemUserBoldText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{user.userName}" />
+
+            <TextView
+                android:id="@+id/userEmail"
+                style="@style/ItemUserNormalText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{user.userEmail}" />
+
+            <TextView
+                android:id="@+id/userAge"
+                style="@style/ItemUserNormalText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{Integer.toString(user.userAge)}" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

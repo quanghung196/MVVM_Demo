@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MVVMSoFukinHard</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_item_user_name">Bùi Quang Hưng</string>
+    <string name="default_item_user_email">thelonelydeath196@gmail.com</string>
+    <string name="default_item_user_age">23 years old</string>
+    <string name="title_user_name">User name</string>
+    <string name="title_user_email">User email</string>
+    <string name="title_user_age">User age</string>
+    <string name="btn_action_add">Add</string>
+    <string name="btn_action_edit">Edit</string>
+    <string name="btn_action_delete">Delete</string>
+</resources>
