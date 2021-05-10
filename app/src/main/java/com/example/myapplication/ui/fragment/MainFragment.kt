@@ -1,6 +1,5 @@
-package com.example.myapplication.view
+package com.example.myapplication.ui.fragment
 
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.example.myapplication.R
@@ -9,16 +8,16 @@ import com.example.myapplication.base.BaseFragment
 import com.example.myapplication.databinding.FragmentMainBinding
 import com.example.myapplication.interfaces.iMainFragment
 import com.example.myapplication.model.User
-import com.example.myapplication.viewmodel.MainFragmentViewModel
+import com.example.myapplication.viewmodel.UserViewModel
 
 
-class MainFragment : BaseFragment<FragmentMainBinding, MainFragmentViewModel>(), iMainFragment {
+class MainFragment : BaseFragment<FragmentMainBinding, UserViewModel>(), iMainFragment {
     private lateinit var mUserAdapter: UserAdapter
     private lateinit var mUser: User
 
     override fun getLayoutId(): Int = R.layout.fragment_main
 
-    override fun getViewModel(): Class<MainFragmentViewModel> = MainFragmentViewModel::class.java
+    override fun getViewModel(): Class<UserViewModel> = UserViewModel::class.java
 
     override fun initSubscriber() {
         viewModel.getAllUser()
@@ -37,14 +36,18 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainFragmentViewModel>(),
     fun addUser() {
         mUser = User("", "", 0)
         val action =
-            MainFragmentDirections.actionMainFragmentToExecuteFragment(mUser)
+            MainFragmentDirections.actionMainFragmentToExecuteFragment(
+                mUser
+            )
         view?.let { Navigation.findNavController(it).navigate(action) }
     }
 
     override fun onUserClicked(user: User) {
-        Toast.makeText(activity, user.toString(), Toast.LENGTH_SHORT).show();
+        showToast(user.toString())
         val action =
-            MainFragmentDirections.actionMainFragmentToExecuteFragment(user)
+            MainFragmentDirections.actionMainFragmentToExecuteFragment(
+                user
+            )
         view?.let { Navigation.findNavController(it).navigate(action) }
     }
 }

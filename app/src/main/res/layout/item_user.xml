@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.myapplication.viewmodel.MainFragmentViewModel" />
+            type="com.example.myapplication.viewmodel.UserViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView

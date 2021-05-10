@@ -1,17 +1,15 @@
 package com.example.myapplication.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ItemUserBinding
 import com.example.myapplication.model.User
-import com.example.myapplication.viewmodel.MainFragmentViewModel
-import kotlinx.android.synthetic.main.item_user.view.*
+import com.example.myapplication.viewmodel.UserViewModel
 
-class UserAdapter(val mainFragmentViewModel: MainFragmentViewModel) :
+class UserAdapter(val userViewModel: UserViewModel) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     private var mUsers: List<User> = ArrayList()
@@ -40,7 +38,7 @@ class UserAdapter(val mainFragmentViewModel: MainFragmentViewModel) :
         if (holder != null) {
             val currentUser = mUsers.get(position)
             holder.binding.user = currentUser
-            holder.binding.viewModel = mainFragmentViewModel
+            holder.binding.viewModel = userViewModel
             holder.binding.executePendingBindings()
         }
     }

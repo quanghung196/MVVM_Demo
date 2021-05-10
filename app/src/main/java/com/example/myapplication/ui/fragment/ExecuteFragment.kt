@@ -1,28 +1,21 @@
-package com.example.myapplication.view
+package com.example.myapplication.ui.fragment
 
 import android.app.Activity
 import android.content.ContentValues.TAG
 import android.content.Context
-import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.example.myapplication.R
 import com.example.myapplication.base.BaseFragment
 import com.example.myapplication.databinding.FragmentExecuteBinding
 import com.example.myapplication.model.User
-import com.example.myapplication.viewmodel.ExecuteFragmentViewModel
-import com.example.myapplication.viewmodel.MainFragmentViewModel
+import com.example.myapplication.viewmodel.UserViewModel
 
 
-class ExecuteFragment : BaseFragment<FragmentExecuteBinding, ExecuteFragmentViewModel>() {
+class ExecuteFragment : BaseFragment<FragmentExecuteBinding, UserViewModel>() {
 
     private val args: ExecuteFragmentArgs by navArgs();
     private lateinit var mUser: User
@@ -30,8 +23,8 @@ class ExecuteFragment : BaseFragment<FragmentExecuteBinding, ExecuteFragmentView
     override fun getLayoutId(): Int = R.layout.fragment_execute
 
 
-    override fun getViewModel(): Class<ExecuteFragmentViewModel> =
-        ExecuteFragmentViewModel::class.java
+    override fun getViewModel(): Class<UserViewModel> =
+        UserViewModel::class.java
 
 
     override fun initSubscriber() {
@@ -54,7 +47,7 @@ class ExecuteFragment : BaseFragment<FragmentExecuteBinding, ExecuteFragmentView
 
     fun addUser() {
         getUser()
-        if (validateText(mUser)) {
+        if (isTextValidated(mUser)) {
             viewModel.insertUser(mUser)
             showToast("Insert succesful")
             backToMainFragment()
@@ -66,7 +59,7 @@ class ExecuteFragment : BaseFragment<FragmentExecuteBinding, ExecuteFragmentView
 
     fun updateUser() {
         getUser()
-        if (validateText(mUser)) {
+        if (isTextValidated(mUser)) {
             viewModel.updateUser(mUser)
             showToast("Update succesful")
             backToMainFragment()
@@ -94,7 +87,7 @@ class ExecuteFragment : BaseFragment<FragmentExecuteBinding, ExecuteFragmentView
         mUser.userAge = Integer.parseInt(binding.etUserAge.text.toString())
     }
 
-    private fun validateText(user: User): Boolean {
+    private fun isTextValidated(user: User): Boolean {
         if (user.userName.length > 0 &&
             user.userEmail.length > 0 &&
             user.userAge.toString().length > 0 &&

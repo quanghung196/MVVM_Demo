@@ -6,7 +6,7 @@
 
         <variable
             name="handleExecuteFrmEvent"
-            type="com.example.myapplication.view.ExecuteFragment" />
+            type="com.example.myapplication.ui.fragment.ExecuteFragment" />
 
         <variable
             name="user"
@@ -17,9 +17,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:context=".view.ExecuteFragment">
+        tools:context=".ui.fragment.ExecuteFragment">
 
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_marginBottom="@dimen/view_group_to_view_group"
@@ -34,7 +34,7 @@
                 android:layout_marginLeft="@dimen/view_group_to_view_group"
                 android:src="@drawable/ic_back" />
 
-        </LinearLayout>
+        </LinearLayout>-->
 
         <LinearLayout
             style="@style/ExecuteInformation"
