@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.utils
 
 import android.app.Application
 
@@ -8,7 +8,7 @@ class MyApp : Application() {
     }
     companion object{
         private var instance : MyApp? = null
-        fun getInstance() : MyApp{
+        fun getInstance() : MyApp {
             return instance!!
         }
     }

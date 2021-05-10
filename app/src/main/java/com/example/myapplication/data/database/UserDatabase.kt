@@ -1,10 +1,9 @@
 package com.example.myapplication.data.database
 
-import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.myapplication.MyApp
+import com.example.myapplication.utils.MyApp
 import com.example.myapplication.data.dao.UserDAO
 import com.example.myapplication.model.User
 

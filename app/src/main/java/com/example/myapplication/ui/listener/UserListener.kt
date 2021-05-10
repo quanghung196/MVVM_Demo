@@ -1,7 +1,7 @@
-package com.example.myapplication.interfaces
+package com.example.myapplication.ui.listener
 
 import com.example.myapplication.model.User
 
-interface iMainFragment {
+interface UserListener {
     fun onUserClicked(user: User)
 }

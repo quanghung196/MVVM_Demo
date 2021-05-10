@@ -21,4 +21,8 @@ class UserRepository() {
 
     fun getAllUser(): LiveData<List<User>> = userDAO.getAllUser()
     fun getUserByID(userID: Int): User = userDAO.getUserByID(userID)
+
+    suspend fun deleteAllUser() = userDAO.deleteAllUser()
+    suspend fun synchronizeAllUserFromServer(users: List<User>) =
+        userDAO.synchronizeAllUserFromServer(users)
 }

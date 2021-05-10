@@ -6,12 +6,12 @@ import com.example.myapplication.R
 import com.example.myapplication.adapter.UserAdapter
 import com.example.myapplication.base.BaseFragment
 import com.example.myapplication.databinding.FragmentMainBinding
-import com.example.myapplication.interfaces.iMainFragment
+import com.example.myapplication.ui.listener.UserListener
 import com.example.myapplication.model.User
 import com.example.myapplication.viewmodel.UserViewModel
 
 
-class MainFragment : BaseFragment<FragmentMainBinding, UserViewModel>(), iMainFragment {
+class MainFragment : BaseFragment<FragmentMainBinding, UserViewModel>(), UserListener {
     private lateinit var mUserAdapter: UserAdapter
     private lateinit var mUser: User
 

@@ -23,4 +23,10 @@ interface UserDAO {
 
     @Query("select * from user_table where user_id_col=:userID")
     fun getUserByID(userID: Int): User
+
+    @Query("delete from user_table")
+    suspend fun deleteAllUser()
+
+    @Insert
+    suspend fun synchronizeAllUserFromServer(users: List<User>)
 }
