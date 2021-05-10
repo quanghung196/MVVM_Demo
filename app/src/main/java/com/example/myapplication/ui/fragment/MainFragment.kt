@@ -4,7 +4,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.example.myapplication.R
 import com.example.myapplication.adapter.UserAdapter
-import com.example.myapplication.base.BaseFragment
+import com.example.myapplication.ui.base.BaseFragment
 import com.example.myapplication.databinding.FragmentMainBinding
 import com.example.myapplication.ui.listener.UserListener
 import com.example.myapplication.model.User
@@ -28,9 +28,11 @@ class MainFragment : BaseFragment<FragmentMainBinding, UserViewModel>(), UserLis
 
     override fun onViewReady() {
         binding.handleMainFrmEvent = this
-        viewModel.setiMainFragment(this)
+        viewModel.setUserListener(this)
         mUserAdapter = UserAdapter(viewModel)
         binding.rvUserList.adapter = mUserAdapter
+
+        setToolbarTitle("List User")
     }
 
     fun addUser() {
@@ -43,7 +45,7 @@ class MainFragment : BaseFragment<FragmentMainBinding, UserViewModel>(), UserLis
     }
 
     override fun onUserClicked(user: User) {
-        showToast(user.toString())
+        //showToast(user.toString())
         val action =
             MainFragmentDirections.actionMainFragmentToExecuteFragment(
                 user

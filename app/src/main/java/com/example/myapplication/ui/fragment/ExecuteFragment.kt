@@ -1,17 +1,19 @@
 package com.example.myapplication.ui.fragment
 
-import android.app.Activity
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.util.Log
 import android.view.View
-import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.example.myapplication.R
-import com.example.myapplication.base.BaseFragment
+import com.example.myapplication.ui.base.BaseFragment
 import com.example.myapplication.databinding.FragmentExecuteBinding
 import com.example.myapplication.model.User
+import com.example.myapplication.utils.ReusableFunctionForEdittext.clearAllEdittext
+import com.example.myapplication.utils.ReusableFunctionForEdittext.getAllEditText
+import com.example.myapplication.utils.ReusableFunctionForEdittext.hideKeyboardInFragment
+import com.example.myapplication.utils.ReusableFunctionForEdittext.isTextFullfill
 import com.example.myapplication.viewmodel.UserViewModel
 
 
@@ -19,6 +21,7 @@ class ExecuteFragment : BaseFragment<FragmentExecuteBinding, UserViewModel>() {
 
     private val args: ExecuteFragmentArgs by navArgs();
     private lateinit var mUser: User
+    private lateinit var textList: ArrayList<EditText>
 
     override fun getLayoutId(): Int = R.layout.fragment_execute
 
@@ -26,20 +29,21 @@ class ExecuteFragment : BaseFragment<FragmentExecuteBinding, UserViewModel>() {
     override fun getViewModel(): Class<UserViewModel> =
         UserViewModel::class.java
 
-
     override fun initSubscriber() {
 
     }
 
     override fun onViewReady() {
-        binding.handleExecuteFrmEvent = this
         mUser = args.user
-        Log.i(TAG, mUser.toString())
+        binding.user = mUser
+        binding.handleExecuteFrmEvent = this
+        textList = ArrayList()
         if (mUser.userName.length > 0) {
+            setToolbarTitle("List User")
             binding.btnAdd.visibility = View.GONE
-            binding.user = mUser
+            setToolbarTitle("Edit User")
         } else {
-            clearText()
+            setToolbarTitle("Add User")
             binding.btnDelete.visibility = View.GONE
             binding.btnEdit.visibility = View.GONE
         }
@@ -47,10 +51,12 @@ class ExecuteFragment : BaseFragment<FragmentExecuteBinding, UserViewModel>() {
 
     fun addUser() {
         getUser()
-        if (isTextValidated(mUser)) {
+        textList.clear()
+        if (isTextFullfill(getAllEditText(binding.linearContainer,textList))) {
             viewModel.insertUser(mUser)
-            showToast("Insert succesful")
+            showToast("Insert successful")
             backToMainFragment()
+            view?.let { activity?.hideKeyboardInFragment(it) }
         } else {
             showToast("Error: Invalid text")
         }
@@ -59,14 +65,15 @@ class ExecuteFragment : BaseFragment<FragmentExecuteBinding, UserViewModel>() {
 
     fun updateUser() {
         getUser()
-        if (isTextValidated(mUser)) {
+        textList.clear()
+        if (isTextFullfill(getAllEditText(binding.linearContainer,textList))) {
             viewModel.updateUser(mUser)
-            showToast("Update succesful")
+            showToast("Update successful")
             backToMainFragment()
+            view?.let { activity?.hideKeyboardInFragment(it) }
         } else {
             showToast("Error: Invalid text")
         }
-        clearText()
     }
 
     fun deleteUser() {
@@ -84,29 +91,15 @@ class ExecuteFragment : BaseFragment<FragmentExecuteBinding, UserViewModel>() {
     private fun getUser() {
         mUser.userName = binding.etUserName.text.toString()
         mUser.userEmail = binding.etUserEmail.text.toString()
-        mUser.userAge = Integer.parseInt(binding.etUserAge.text.toString())
-    }
 
-    private fun isTextValidated(user: User): Boolean {
-        if (user.userName.length > 0 &&
-            user.userEmail.length > 0 &&
-            user.userAge.toString().length > 0 &&
-            user.userAge > 0
-        ) {
-            return true
+        if (binding.etUserAge.text.toString().isEmpty()) {
+            mUser.userAge = 0;
+        } else {
+            mUser.userAge = Integer.parseInt(binding.etUserAge.text.toString())
         }
-        return false
     }
 
     private fun clearText() {
-        binding.etUserName.text.clear()
-        binding.etUserEmail.text.clear()
-        binding.etUserAge.text.clear()
-        view?.let { activity?.hideKeyboard(it) }
-    }
-
-    private fun Context.hideKeyboard(view: View) {
-        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+        clearAllEdittext(binding.linearContainer)
     }
 }

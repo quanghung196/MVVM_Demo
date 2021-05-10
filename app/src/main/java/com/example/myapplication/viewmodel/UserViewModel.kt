@@ -15,7 +15,7 @@ class UserViewModel() : ViewModel() {
     private val userRepository: UserRepository = UserRepository()
 
 
-    private lateinit var UserListener: UserListener
+    private lateinit var userListener: UserListener
 
     fun insertUser(user: User) = viewModelScope.launch {
         userRepository.insertUser(user)
@@ -34,13 +34,13 @@ class UserViewModel() : ViewModel() {
     fun getUserByID(userID: Int): User = userRepository.getUserByID(userID)
 
 
-    fun setiMainFragment(UserListener: UserListener) {
-        this.UserListener = UserListener
+    fun setUserListener(userListener: UserListener) {
+        this.userListener = userListener
     }
 
 
     fun onUserClicked(user: User) {
-        UserListener.onUserClicked(user)
+        userListener  .onUserClicked(user)
     }
 
     override fun onCleared() {

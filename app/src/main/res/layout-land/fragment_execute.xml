@@ -37,6 +37,7 @@
         </LinearLayout>-->
 
         <LinearLayout
+            android:id="@+id/linearContainer"
             style="@style/ExecuteInformation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -121,30 +122,30 @@
             android:orientation="horizontal">
 
             <Button
-                android:onClick="@{() -> handleExecuteFrmEvent.deleteUser()}"
                 android:id="@+id/btnDelete"
                 style="@style/ExecuteButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="@{() -> handleExecuteFrmEvent.deleteUser()}"
                 android:text="@string/btn_action_delete" />
 
             <Button
-                android:onClick="@{() -> handleExecuteFrmEvent.updateUser()}"
                 android:id="@+id/btnEdit"
                 style="@style/ExecuteButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="@{() -> handleExecuteFrmEvent.updateUser()}"
                 android:text="@string/btn_action_edit" />
 
             <Button
-                android:onClick="@{() -> handleExecuteFrmEvent.addUser()}"
                 android:id="@+id/btnAdd"
                 style="@style/ExecuteButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="@{() -> handleExecuteFrmEvent.addUser()}"
                 android:text="@string/btn_action_add" />
         </LinearLayout>
 
