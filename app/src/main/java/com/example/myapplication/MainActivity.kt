@@ -15,15 +15,15 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var navController: NavController
+    private lateinit var mBinding: ActivityMainBinding
+    private lateinit var mNavController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        navController= Navigation.findNavController(this, R.id.nav_host_fragment)
+        mNavController= Navigation.findNavController(this, R.id.nav_host_fragment)
         //setSupportActionBar(binding.toolbarbMain)
-        binding.toolbarbMain.setupWithNavController(navController)
+        mBinding.toolbarbMain.setupWithNavController(mNavController)
     }
 }

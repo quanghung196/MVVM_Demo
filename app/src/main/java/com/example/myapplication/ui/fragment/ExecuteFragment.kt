@@ -18,9 +18,9 @@ import com.example.myapplication.viewmodel.MainFragmentViewModel
 
 class ExecuteFragment : BaseFragment<FragmentExecuteBinding, ExecuteFragmentViewModel>() {
 
-    private val args: ExecuteFragmentArgs by navArgs();
+    private val mArgs: ExecuteFragmentArgs by navArgs();
     private lateinit var mUser: User
-    private lateinit var textList: ArrayList<EditText>
+    private lateinit var mEditTextList: ArrayList<EditText>
 
     override fun getLayoutId(): Int = R.layout.fragment_execute
 
@@ -33,10 +33,10 @@ class ExecuteFragment : BaseFragment<FragmentExecuteBinding, ExecuteFragmentView
     }
 
     override fun onViewReady() {
-        mUser = args.user
+        mUser = mArgs.user
         binding.user = mUser
         binding.handleExecuteFrmEvent = this
-        textList = ArrayList()
+        mEditTextList = ArrayList()
         if (mUser.userName.length > 0) {
             setToolbarTitle("List User")
             binding.btnAdd.visibility = View.GONE
@@ -51,8 +51,8 @@ class ExecuteFragment : BaseFragment<FragmentExecuteBinding, ExecuteFragmentView
 
     fun addUser() {
         getUser()
-        textList.clear()
-        if (isTextFullfill(getAllEditText(binding.relativeContainer,textList))) {
+        mEditTextList.clear()
+        if (isTextFullfill(getAllEditText(binding.relativeContainer,mEditTextList))) {
             viewModel.insertUser(mUser)
             showToast("Insert successful")
             backToMainFragment()
@@ -65,8 +65,8 @@ class ExecuteFragment : BaseFragment<FragmentExecuteBinding, ExecuteFragmentView
 
     fun updateUser() {
         getUser()
-        textList.clear()
-        if (isTextFullfill(getAllEditText(binding.relativeContainer,textList))) {
+        mEditTextList.clear()
+        if (isTextFullfill(getAllEditText(binding.relativeContainer,mEditTextList))) {
             viewModel.updateUser(mUser)
             showToast("Update successful")
             backToMainFragment()

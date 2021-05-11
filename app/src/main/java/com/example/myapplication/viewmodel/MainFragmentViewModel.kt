@@ -12,12 +12,12 @@ import kotlinx.coroutines.launch
 
 
 class MainFragmentViewModel() : ViewModel() {
-    private val userRepository: UserRepository = UserRepository()
+    private val mUserRepository: UserRepository = UserRepository()
 
 
     private lateinit var userListener: UserListener
 
-    fun getAllUser(): LiveData<List<User>> = userRepository.getAllUser()
+    fun getAllUser(): LiveData<List<User>> = mUserRepository.getAllUser()
 
     fun setUserListener(userListener: UserListener) {
         this.userListener = userListener

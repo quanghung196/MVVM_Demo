@@ -8,19 +8,19 @@ import kotlinx.coroutines.launch
 
 class ExecuteFragmentViewModel : ViewModel() {
 
-    private val userRepository: UserRepository = UserRepository()
+    private val mUserRepository: UserRepository = UserRepository()
 
     fun insertUser(user: User) = viewModelScope.launch {
-        userRepository.insertUser(user)
+        mUserRepository.insertUser(user)
     }
 
     fun updateUser(user: User) = viewModelScope.launch {
-        userRepository.updateUser(user)
+        mUserRepository.updateUser(user)
     }
 
     fun deleteUser(user: User) = viewModelScope.launch {
-        userRepository.deleteUser(user)
+        mUserRepository.deleteUser(user)
     }
 
-    fun getUserByID(userID: Int): User = userRepository.getUserByID(userID)
+    fun getUserByID(userID: Int): User = mUserRepository.getUserByID(userID)
 }
