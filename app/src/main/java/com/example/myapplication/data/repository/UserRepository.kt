@@ -1,9 +1,8 @@
 package com.example.myapplication.data.repository
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import com.example.myapplication.data.dao.UserDAO
-import com.example.myapplication.data.database.UserDatabase
+import com.example.myapplication.data.local.UserDatabase
 import com.example.myapplication.model.User
 
 class UserRepository() {

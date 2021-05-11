@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.myapplication.viewmodel.UserViewModel" />
+            type="com.example.myapplication.viewmodel.MainFragmentViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -24,7 +24,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/user_card_padding"
+            android:padding="@dimen/user_card_padding"
             android:orientation="vertical">
 
             <TextView

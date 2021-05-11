@@ -8,4 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#A6A5A5</color>
+
+
+    <color name="blueAtoll">#00B1D2</color>
+    <color name="vibrantYellow">#FDDB27</color>
+    <color name="backgroundColor">#f5f5f5</color>
 </resources>

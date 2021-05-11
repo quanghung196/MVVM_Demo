@@ -18,7 +18,10 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarbMain"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:theme="@style/FancyToolBar"
+                app:colorControlNormal="@color/white"
+                app:titleTextColor="@color/white" />
 
         </com.google.android.material.appbar.AppBarLayout>
 

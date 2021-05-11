@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ItemUserBinding
 import com.example.myapplication.model.User
-import com.example.myapplication.viewmodel.UserViewModel
+import com.example.myapplication.viewmodel.MainFragmentViewModel
 
-class UserAdapter(val userViewModel: UserViewModel) :
+class UserAdapter(val mainFragmentViewModel: MainFragmentViewModel) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     private var mUsers: List<User> = ArrayList()
@@ -38,7 +38,7 @@ class UserAdapter(val userViewModel: UserViewModel) :
         if (holder != null) {
             val currentUser = mUsers.get(position)
             holder.binding.user = currentUser
-            holder.binding.viewModel = userViewModel
+            holder.binding.viewModel = mainFragmentViewModel
             holder.binding.executePendingBindings()
         }
     }

@@ -8,16 +8,16 @@ import com.example.myapplication.ui.base.BaseFragment
 import com.example.myapplication.databinding.FragmentMainBinding
 import com.example.myapplication.ui.listener.UserListener
 import com.example.myapplication.model.User
-import com.example.myapplication.viewmodel.UserViewModel
+import com.example.myapplication.viewmodel.MainFragmentViewModel
 
 
-class MainFragment : BaseFragment<FragmentMainBinding, UserViewModel>(), UserListener {
+class MainFragment : BaseFragment<FragmentMainBinding, MainFragmentViewModel>(), UserListener {
     private lateinit var mUserAdapter: UserAdapter
     private lateinit var mUser: User
 
     override fun getLayoutId(): Int = R.layout.fragment_main
 
-    override fun getViewModel(): Class<UserViewModel> = UserViewModel::class.java
+    override fun getViewModel(): Class<MainFragmentViewModel> = MainFragmentViewModel::class.java
 
     override fun initSubscriber() {
         viewModel.getAllUser()
